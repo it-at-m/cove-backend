@@ -1,0 +1,72 @@
+{
+    "allowRemoteResourceManagement": false,
+    "policyEnforcementMode": "ENFORCING",
+    "resources": [
+        {
+            "name": "COVE_BACKEND_READ_PERSONEN",
+            "type": "cove-cove-backend-service",
+            "scopes": []
+        },
+        {
+            "name": "COVE_BACKEND_WRITE_PERSONEN",
+            "type": "cove-cove-backend-service",
+            "scopes": []
+        },
+        {
+            "name": "COVE_BACKEND_CREATE_BERICHTE",
+            "type": "cove-cove-backend-service",
+            "scopes": []
+        }
+    ],
+    "policies": [
+        {
+            "name": "rolepolicy_admin",
+            "type": "role",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+                "roles": "[{\"id\":\"cove/clientrole_admin\",\"required\":false}]"
+            }
+        },
+        {
+            "name": "rolepolicy_readonly",
+            "type": "role",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+                "roles": "[{\"id\":\"cove/clientrole_readonly\",\"required\":false}]"
+            }
+        },
+        {
+            "name": "permission_COVE_BACKEND_CREATE_BERICHTE",
+            "type": "resource",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+                "resources": "[\"COVE_BACKEND_CREATE_BERICHTE\"]",
+                "applyPolicies": "[\"rolepolicy_admin\"]"
+            }
+        },
+        {
+            "name": "permission_COVE_BACKEND_WRITE_PERSONEN",
+            "type": "resource",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+                "resources": "[\"COVE_BACKEND_WRITE_PERSONEN\"]",
+                "applyPolicies": "[\"rolepolicy_admin\"]"
+            }
+        },
+        {
+            "name": "permission_COVE_BACKEND_READ_PERSONEN",
+            "type": "resource",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+                "resources": "[\"COVE_BACKEND_READ_PERSONEN\"]",
+                "applyPolicies": "[\"rolepolicy_admin\",\"rolepolicy_readonly\"]"
+            }
+        }
+    ],
+    "scopes": []
+}

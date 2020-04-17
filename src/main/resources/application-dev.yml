@@ -1,0 +1,52 @@
+server.port: 8080
+
+spring:
+
+  # Spring data rest
+  data:
+    rest:
+      # Definition of page size for PagingAndSortingRepository
+      max-page-size: 0x7fffffff
+      default-page-size: 0x7fffffff
+      return-body-on-update: true
+      return-body-on-create: true
+
+  # Spring JPA
+  h2.console.enabled: true
+  jpa:
+    database:
+    hibernate:
+      # always drop and create the db should be the best
+      # configuration for local (development) mode. this
+      # is also the default, that spring offers by convention.
+      # but here explicite:
+      ddl-auto: none
+      naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    # Logging for database operation
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  #datasource:
+    #url: jdbc:<database>:thin:@//<host>:<port>/<service>
+    #username:
+  flyway:
+    enabled: true
+    locations:
+      - classpath:db/migration/h2
+
+# Define the keycloak consolidation realm here
+realm:
+
+security:
+  # possible values: none, all, changing (With changing, only changing requests such as POST, PUT, DELETE are logged)
+  logging.requests: all
+  oauth2:
+    resource:
+      jwk:
+        key-set-uri:
+      user-info-uri:
+      prefer-token-info: false
+    client:
+      client-id:
+      scope:

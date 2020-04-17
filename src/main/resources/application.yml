@@ -1,0 +1,40 @@
+spring:
+  application.name: cove-backend-microservice
+  banner.location: banner.txt
+  jpa.properties:
+    hibernate.search.default.directory_provider: filesystem
+    hibernate.search.default.indexBase: ./index/default
+
+
+server:
+  port: 39146
+  error:
+    include-exception: false
+    include-stacktrace: never
+    whitelabel:
+      enabled: false
+
+  # Info for actuator endpoint
+service:
+  info:
+    oid: ${spring.application.name}
+    name: cove-backend
+    version: v1.0-SNAPSHOT
+
+# Config for spring actuator endpoints
+management:
+  server.port: ${server.port}
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: 'health, info, prometheus'
+      path-mapping:
+        prometheus: 'metrics'
+  endpoint:
+    health.enabled: true
+    info.enabled: true
+    prometheus.enabled: true
+
+info.application.name: ${service.info.name}
+info.application.version: ${service.info.version}
