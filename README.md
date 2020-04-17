@@ -169,10 +169,12 @@ mvn -Dflyway.configFiles=flywayconf/flyway.conf.k -Dflyway.password=<PW> flyway:
 flyway clean -configFiles=./flywayconf/flyway.conf.k
 ```
 
+## Lizenzierung und Copyright ##
+© Copyright 2020 – it@M
 
-## Lizenz
+*COVe* ist lizenziert unter der *European Union Public Licence (EUPL)*.
+Für mehr Informationen siehe `LICENSE`.
 
-COVe ist lizenziert unter der European Union Public Licence (EUPL). Für mehr Informationen siehe `LICENSE`.
 
 
 
