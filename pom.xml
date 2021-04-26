@@ -20,7 +20,7 @@
         <ojdbc8.version>12.2.0.1</ojdbc8.version>
         <apache.commons.collections4>4.4</apache.commons.collections4>
         <apache.commons.csv>1.7</apache.commons.csv>
-        <apache.commons.io>2.6</apache.commons.io>
+        <apache.commons.io>2.7</apache.commons.io>
         <apache.commons.lang3>3.9</apache.commons.lang3>
         <apache.commons.text>1.8</apache.commons.text>
         <apache.commons.validator>1.6</apache.commons.validator>
